@@ -1,3 +1,8 @@
+package Users;
+
+import utils.Cart;
+import utils.Item;
+
 public abstract class User {
     private String userID;
 

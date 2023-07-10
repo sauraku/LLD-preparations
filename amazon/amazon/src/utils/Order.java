@@ -1,3 +1,7 @@
+package utils;
+
+import amazon.AmazonAppService;
+
 import java.util.List;
 
 public class Order {
@@ -38,5 +42,6 @@ public class Order {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+        AmazonAppService.getInstance().notifySubscribers(this);
     }
 }

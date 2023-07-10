@@ -1,3 +1,5 @@
+package utils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,14 +9,12 @@ public class Product {
     private String name;
     private ProductCategory category;
     private List<Comment> comments = new ArrayList<>();
-    private Seller seller;
 
-    public Product(String id, float price, String name, ProductCategory category, Seller seller) {
+    public Product(String id, float price, String name, ProductCategory category) {
         this.id = id;
         this.price = price;
         this.name = name;
         this.category = category;
-        this.seller = seller;
     }
 
     public String getId() {

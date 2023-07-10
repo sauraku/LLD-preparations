@@ -1,3 +1,5 @@
+package utils;
+
 public class Comment {
     private String userID;
     private String comment;

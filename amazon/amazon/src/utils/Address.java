@@ -1,12 +1,14 @@
+package utils;
+
 public class Address {
     private String name;
     private String addressLine;
     private String city;
     private String country;
     private int pincode;
-    private int phoneNo;
+    private long phoneNo;
 
-    public Address(String name, String addressLine, String city, String country, int pincode, int phoneNo) {
+    public Address(String name, String addressLine, String city, String country, int pincode, long phoneNo) {
         this.name = name;
         this.addressLine = addressLine;
         this.city = city;
@@ -55,7 +57,7 @@ public class Address {
         this.pincode = pincode;
     }
 
-    public int getPhoneNo() {
+    public long getPhoneNo() {
         return phoneNo;
     }
 
