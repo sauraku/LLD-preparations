@@ -3,7 +3,7 @@
 + user needs to be registered to buy the product
 + user can checkout items in cart
 + user can rate and review products
-+ user should be notified when the order statsus changes
++ user should be notified when the order status changes
 --------------------
 
 
@@ -13,7 +13,14 @@ Product
 + price: float
 + name: string
 + category: ProductCategory
++ comments: List<Comment>
 -----------------------
+
+
+Comment
+-----
++ comment: string
++ userID: string
 
 Item
 --------------
@@ -55,12 +62,91 @@ Order
 + userID: string
 + status: OrderStatus
 --------------
++ notifyOnStatusChange()
+----------------------
 
-User
+
+OrderStatus
+--------------------
++ status: enum
+-----------------------
+
+
+User[Abstract]
 -------------------
 + userID: string
-+ addresses: List<Address>
++ cart: Cart
 -----------------------
++ search()
++ addToCart(item: Item)
++ removeFromCart(item: Item)
+---------------------
+
+
+Buyer(User)
+----------------------
++ address: List<Address>
+----------------------
++ checkout()
++ comment(product: Product)
+--------------------------
+
+Seller(Buyer)
+---------------
++ itemOnSale: List<Item>
+-------------------
++ addItem(item:Item)
++ removeItem(item:Item)
++ updateItem(item:Item)
+-----------------------------
+
+Visitor(User)
+----------
++ cookie:string
+-----------
+
+
+NotificationService
+--------------------
++ subscriber: Map<order, List<NotificationSubscriber>>
+---------------------
++ notify(order:Order)
+-------------------
+
+NotificationSubscriber[interface]
+------------------
+-----------------
++ triggerNotification()
+-----------------
+
+EmailNotificationSubscriber(NotificationSubscriber)
+-------------
++ triggerNotification()
+--------------
+
+SMSNotificationSubscriber(NotificationSubscriber)
+-------------
++ triggerNotification()
+--------------
+
+WhatsappNotificationSubscriber(NotificationSubscriber)
+-------------
++ triggerNotification()
+--------------
+
+AmazonApp
+----------------------
++ products: List<Product>
+----------
++ processOrder(order: Order)
++ searchProduct(queryString: String): List<Product>
++ handleComment(comment: string, user: Buyer)
+
+
+
+
+
+
 
 
 
